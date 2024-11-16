@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  mysql:
+    image: mysql:8.0 # Versão do MySQL
+    container_name: mysql_container
+    ports:
+      - "3306:3306" # Porta padrão do MySQL
+    environment:
+      MYSQL_ROOT_PASSWORD: nataniel # Senha do usuário root
+      MYSQL_DATABASE: DBExemplo # Nome do banco de dados inicial
+      MYSQL_USER: nataniel # Nome do usuário inicial
+      MYSQL_PASSWORD: nataniel123 # Senha do usuário inicial
+    volumes:
+      - mysql_data:/var/lib/mysql # Persistência de dados
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mysql_data:
